@@ -5,10 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+
 {% if latest_question_list %}
 <ul>
+    <!--    References path('<int:question_id>/', views.detail, name='detail') in polls/urls.py-->
     {% for question in latest_question_list %}
-    <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    <li><a href="{% url 'polls_namespace:detail' question.id %}">{{ question.question_text }}</a></li>
     {% endfor %}
 </ul>
 {% else %}
